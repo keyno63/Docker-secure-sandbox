@@ -6,6 +6,6 @@ RUN apt update \
     && apt-get install git golang-go -y \
     && git config --global "url.git@github.com:.insteadOf" "https://github.com/"
 RUN --mount=type=ssh \
-    --mount=type=secret,id=config,target=/root/.ssh/config \
-    --mount=type=secret,id=hosts,target=/root/.ssh/known_hosts \
-    go mod vendor
+    --mount=type=secret,id=secure_file,target=/app/secure_file \
+    export SECURE_VALUE=$(cat /app/secure_file)
+RUN go mod vendor

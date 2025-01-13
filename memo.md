@@ -5,8 +5,7 @@ secretを有効にしてdocker build
 ```
 docker build \
   --ssh default \
-  --secret id=config,src=${HOME}/ssh_config \
-  --secret id=hosts,src=${HOME}/known_hosts \
+  --secret id=secure_file,src=./config/secure_file \
   -f docker/Dockerfile -t docker-secure-sandbox:v0.0 .
 ```
 
